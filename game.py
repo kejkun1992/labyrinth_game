@@ -17,4 +17,10 @@ class Graphics():
         self.forward_right = PhotoImage(file='graphics/forward_right.png')
         self.forward_left_right = PhotoImage(file='graphics/forward_left_right.png')
 
+'''this class contains all labyrinths in list of lists'''
+
+
+class Labyrinths():
+    def __init__(self):
+        labyrinth1 = [[1, 0, 1], [1, 0, 1], [1, 0, 1]]
 
