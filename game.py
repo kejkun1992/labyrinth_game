@@ -18,22 +18,42 @@ class Window():
     def __init__(self, graphics_object):
         # window declaration
         self.window = Tk()
-        self.window.title('Labyrint Game')
+        self.window.title('Labyrinth Game')
         self.window.resizable(0, 0)
         self.window.wm_attributes('-topmost', 1)
-        self.window.geometry('600x500')
+        self.window.geometry('650x500')
         # canvas declaration
         self.canvas = Canvas(self.window, width=500, height=500, bd=0, highlightthickness=0)
         self.canvas.place(x=0, y=0)
         self.graphics = graphics_object()
         self.board = self.canvas.create_image(0, -1500, image=self.graphics.board, anchor='nw')
-        # buttons declaration
-        self.button1 = Button(self.window, text='1', font=('Arial', 20),
+        # buttons and labels declaration
+        self.label1 = Label(self.window, text='Labyrinths', font=('Arial', 20))
+        self.label1.place(x=510, y=10)
+        self.button1 = Button(self.window, text='I    ', font=('Arial', 20),
                               command=print, relief='solid')
-        self.button1.place(x=500, y=0)
-        self.button2 = Button(self.window, text='2', font=('Arial', 20),
+        self.button1.place(x=510, y=60)
+        self.button2 = Button(self.window, text='II   ', font=('Arial', 20),
                               command=print, relief='solid')
-        self.button2.place(x=500, y=80)
+        self.button2.place(x=580, y=60)
+        self.button3 = Button(self.window, text='III  ', font=('Arial', 20),
+                              command=print, relief='solid')
+        self.button3.place(x=510, y=120)
+        self.button4 = Button(self.window, text='IV  ', font=('Arial', 20),
+                              command=print, relief='solid')
+        self.button4.place(x=580, y=120)
+        self.button5 = Button(self.window, text='V   ', font=('Arial', 20),
+                              command=print, relief='solid')
+        self.button5.place(x=510, y=180)
+        self.button6 = Button(self.window, text='VI  ', font=('Arial', 20),
+                              command=print, relief='solid')
+        self.button6.place(x=580, y=180)
+        self.button7 = Button(self.window, text='VII ', font=('Arial', 20),
+                              command=print, relief='solid')
+        self.button7.place(x=510, y=240)
+        self.button8 = Button(self.window, text='VIII', font=('Arial', 20),
+                              command=print, relief='solid')
+        self.button8.place(x=580, y=240)
         
 '''this class contains all labyrinths in list of lists'''
 
