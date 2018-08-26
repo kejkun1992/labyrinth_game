@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import time, random
 from tkinter import *
 
 '''this class contains game graphics'''
@@ -17,9 +16,15 @@ class Labyrinths():
     def __init__(self):
         # 0 - corridor, 1 - wall, 2 - exit
         self.labyrinth1 = [[1, 2, 1], [1, 0, 1], [1, 0, 1], [1, 1, 1]]
+    
+    def turn_left(self, labyrinth: list) -> list:
+        return 'a'
+    
+    def turn_right(self, labyrinth: list) -> list:
+        pass
         
-    def turn_around(self, labyrinth):
-        labyrinth = labyrinth[-1::-1] #  nie zadzaila
+    def turn_around(self, labyrinth: list) -> list:
+        pass
         
 '''main game class, game window, buttons and canvas'''
 
@@ -41,6 +46,7 @@ class Window():
         # buttons and labels declaration
         self.labelLabyrinths = Label(self.window, text='Labyrinths', font=('Arial', 20))
         self.labelLabyrinths.place(x=510, y=10)
+        
         self.button1 = Button(self.window, text='I    ', font=('Arial', 20),
                               command=print, relief='solid')
         self.button1.place(x=510, y=60)
@@ -65,6 +71,7 @@ class Window():
         self.button8 = Button(self.window, text='VIII', font=('Arial', 20),
                               command=print, relief='solid')
         self.button8.place(x=580, y=240)
+        
         self.labelKeys = Label(self.window, text='KEYS', font=('Arial', 12))
         self.labelKeys.place(x=510, y=320)
         self.labelW = Label(self.window, text='W    FORWARD', font=('Arial', 10))
@@ -80,9 +87,10 @@ class Window():
         
     def move_forward(self):
         pass
-        
-window = Window(Graphics, Labyrinths)
-window.window.mainloop()
+
+if __name__ == '__main__':     
+    window = Window(Graphics, Labyrinths)
+    window.window.mainloop()
 
 
 
