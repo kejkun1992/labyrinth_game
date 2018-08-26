@@ -10,12 +10,23 @@ class Graphics():
     def __init__(self):
         self.board = PhotoImage(file='graphics\\board.png')
         
+'''this class contains all labyrinths in list of lists'''
+
+
+class Labyrinths():
+    def __init__(self):
+        # 0 - corridor, 1 - wall, 2 - exit
+        self.labyrinth1 = [[1, 2, 1], [1, 0, 1], [1, 0, 1], [1, 1, 1]]
         
-'''game window and canvas'''
+    def turn_around(self, labyrinth):
+        labyrinth = labyrinth[-1::-1] #  nie zadzaila
+        
+'''main game class, game window, buttons and canvas'''
 
 
 class Window():
-    def __init__(self, graphics_object):
+    def __init__(self, graphics_object, labyrinths_object):
+        self.labyrinths = labyrinths_object()
         # window declaration
         self.window = Tk()
         self.window.title('Labyrinth Game')
@@ -28,8 +39,8 @@ class Window():
         self.graphics = graphics_object()
         self.board = self.canvas.create_image(0, -1500, image=self.graphics.board, anchor='nw')
         # buttons and labels declaration
-        self.label1 = Label(self.window, text='Labyrinths', font=('Arial', 20))
-        self.label1.place(x=510, y=10)
+        self.labelLabyrinths = Label(self.window, text='Labyrinths', font=('Arial', 20))
+        self.labelLabyrinths.place(x=510, y=10)
         self.button1 = Button(self.window, text='I    ', font=('Arial', 20),
                               command=print, relief='solid')
         self.button1.place(x=510, y=60)
@@ -54,15 +65,23 @@ class Window():
         self.button8 = Button(self.window, text='VIII', font=('Arial', 20),
                               command=print, relief='solid')
         self.button8.place(x=580, y=240)
+        self.labelKeys = Label(self.window, text='KEYS', font=('Arial', 12))
+        self.labelKeys.place(x=510, y=320)
+        self.labelW = Label(self.window, text='W    FORWARD', font=('Arial', 10))
+        self.labelW.place(x=510, y=350)
+        self.labelA = Label(self.window, text='A     LEFT', font=('Arial', 10))
+        self.labelA.place(x=510, y=380)
+        self.labelD = Label(self.window, text='D     RIGHT', font=('Arial', 10))
+        self.labelD.place(x=510, y=410)
+        self.labelS = Label(self.window, text='S     TURN AROUND', font=('Arial', 10))
+        self.labelS.place(x=510, y=440)
+        # position of graphics board
+        self.board_position = [0, -1500]
         
-'''this class contains all labyrinths in list of lists'''
-
-
-class Labyrinths():
-    def __init__(self):
-        labyrinth1 = [[1, 2, 1], [1, 0, 1], [1, 0, 1]]
+    def move_forward(self):
+        pass
         
-window = Window(Graphics)
+window = Window(Graphics, Labyrinths)
 window.window.mainloop()
 
 
