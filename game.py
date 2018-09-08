@@ -15,16 +15,30 @@ class Graphics():
 class Labyrinths():
     def __init__(self):
         # 0 - corridor, 1 - wall, 2 - exit
-        self.labyrinth1 = [[1, 2, 1], [1, 0, 1], [1, 0, 1], [1, 1, 1]]
+        self.labyrinth1 = None
+        self.labyrinth2 = None
+        self.labyrinth3 = None
+        self.labyrinth4 = None
+        self.labyrinth5 = None
+        self.labyrinth6 = None
+        self.labyrinth7 = None
+        self.labyrinth8 = None
     
     def turn_left(self, labyrinth: list) -> list:
-        return 'a'
+        turned = [[] for i in range(len(labyrinth[0]))]
+        for i in range(-1,-len(labyrinth[0])-1,-1):
+            for j in range(len(labyrinth)):
+                turned[i].append(labyrinth[j][i])
+        return turned[::-1]
     
     def turn_right(self, labyrinth: list) -> list:
-        pass
+        for x in range(3):
+            labyrinth = self.turn_left(labyrinth)
+        return labyrinth
         
     def turn_around(self, labyrinth: list) -> list:
-        pass
+        turned = [l[::-1] for l in labyrinth]
+        return turned[::-1]
         
 '''main game class, game window, buttons and canvas'''
 
@@ -38,7 +52,7 @@ class Window():
         self.window.resizable(0, 0)
         self.window.wm_attributes('-topmost', 1)
         self.window.geometry('650x500')
-        # canvas declaration
+        # canvas and board declaration
         self.canvas = Canvas(self.window, width=500, height=500, bd=0, highlightthickness=0)
         self.canvas.place(x=0, y=0)
         self.graphics = graphics_object()
